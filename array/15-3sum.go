@@ -67,7 +67,7 @@ func ThreeSum(nums []int) [][]int {
 func ThreeSumCode(nums []int) [][]int {
 	resSli := make([][]int, 0)
 	// 特判
-	if nums == nil || len(nums) < 3 {
+	if len(nums) < 3 {
 		return resSli
 	}
 	// 排序

@@ -27,7 +27,7 @@ nums[a] + nums[b] + nums[c] + nums[d] == target
 // FourSumTwoPoint 采用三个数字取和的方法
 func FourSumTwoPoint(nums []int, target int) [][]int {
 	// 特判
-	if nums == nil || len(nums) < 4 {
+	if len(nums) < 4 {
 		return [][]int{}
 	}
 	// 排序
@@ -77,7 +77,7 @@ func FourSumTwoPoint(nums []int, target int) [][]int {
 // FourSumTwoPointOptimal 双指针 优化版
 func FourSumTwoPointOptimal(nums []int, target int) [][]int {
 	// 特判
-	if nums == nil || len(nums) < 4 {
+	if len(nums) < 4 {
 		return [][]int{}
 	}
 	// 初始化返回值

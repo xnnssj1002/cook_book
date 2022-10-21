@@ -38,7 +38,7 @@ for (int i = 0; i < k; i++) {
 func RemoveDuplicates(nums []int) int {
 	fmt.Println(nums)
 	// 特判
-	if nums == nil || len(nums) == 0 {
+	if len(nums) == 0 {
 		return 0
 	}
 	start, end := 0, len(nums)
@@ -56,7 +56,7 @@ func RemoveDuplicates(nums []int) int {
 
 // RemoveDuplicatesFastSlowPoint 使用快慢指针
 func RemoveDuplicatesFastSlowPoint(nums []int) int {
-	if nums == nil || len(nums) <= 1 {
+	if len(nums) <= 1 {
 		return len(nums)
 	}
 

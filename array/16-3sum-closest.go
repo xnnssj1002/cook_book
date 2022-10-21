@@ -30,7 +30,7 @@ import (
 //		其他场景，继续下次循环
 func ThreeSumClosest(nums []int, target int) int {
 	// 1、特判
-	if nums == nil || len(nums) < 3 {
+	if len(nums) < 3 {
 		return 0
 	}
 	// 2、定义最优解
@@ -69,7 +69,7 @@ func ThreeSumClosest(nums []int, target int) int {
 // ThreeSumClosestBy15Question 借助第15题的排序加上双指针来实现
 func ThreeSumClosestBy15Question(nums []int, target int) int {
 	// 特判
-	if nums == nil || len(nums) < 3 {
+	if len(nums) < 3 {
 		return 0
 	}
 	// 求绝对值函数
