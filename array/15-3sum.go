@@ -76,7 +76,7 @@ func ThreeSumCode(nums []int) [][]int {
 	fmt.Println("排序后的切片", nums)
 
 	// 遍历排序后切片
-	for i := 0; i < len(nums); i++ {
+	for i := 0; i < len(nums)-2; i++ {
 		if nums[i] > 0 {
 			break
 		}
