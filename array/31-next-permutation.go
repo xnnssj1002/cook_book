@@ -1,5 +1,10 @@
 package array
 
+import (
+	"fmt"
+	"sort"
+)
+
 /* 题目 31. 下一个排列
 整数数组的一个 排列  就是将其所有成员以序列或线性顺序排列。
 
@@ -28,6 +33,72 @@ package array
 
 */
 
-func NextPermutation(nums []int) {
+/* 思路与解法
+以排列 [4,5,2,6,3,1] 为例：
+我们能找到的符合条件的一对「较小数」与「较大数」的组合为 2 与 3，满足「较小数」尽量靠右，而「较大数」尽可能小。
+将 2 与 3 交换
+当我们完成交换后排列变为 [4,5,3,6,2,1]，此时我们可以重排「较小数」右边的序列，即原来 2 的位置，现在 3 位置后的序列。
+最终序列变为 [4,5,3,1,2,6]。
+*/
 
+func NextPermutation(nums []int) {
+	n := len(nums)
+	if n <= 1 {
+		return
+	}
+	// 1、寻找符合条件的一对「较小数」与「较大数」
+	minIndex, maxIndex := 0, 0
+	maxNum := nums[n-1]
+	for i := n - 2; i >= 0; i-- {
+		if maxNum > nums[i] {
+			minIndex = i
+			minDiff := maxNum - nums[i]
+			for j := i + 1; j < n; j++ {
+				if nums[j] > nums[minIndex] && nums[j]-nums[minIndex] <= minDiff {
+					minDiff = nums[j] - nums[minIndex]
+					maxIndex = j
+				}
+			}
+			break
+		} else {
+			maxNum = nums[i]
+		}
+	}
+	fmt.Println("min index=", minIndex, "min=", nums[minIndex], "max index=", maxIndex, "max=", nums[maxIndex])
+
+	// 2、交换
+	nums[minIndex], nums[maxIndex] = nums[maxIndex], nums[minIndex]
+	fmt.Println("交换后的切片为", nums)
+
+	// 3、重排「较小数」右边的序列
+	sort.Ints(nums[minIndex+1:])
+
+	// 4、如果没有满足条件的一对「较小数」与「较大数」，直接将切片进行正序排列
+	if minIndex == 0 && maxIndex == 0 {
+		sort.Ints(nums)
+	}
+
+}
+
+// NextPermutationCode 网站源代码
+func NextPermutationCode(nums []int) {
+	n := len(nums)
+	i := n - 2
+	for i >= 0 && nums[i] >= nums[i+1] {
+		i--
+	}
+	if i >= 0 {
+		j := n - 1
+		for j >= 0 && nums[i] >= nums[j] {
+			j--
+		}
+		nums[i], nums[j] = nums[j], nums[i]
+	}
+	reverse(nums[i+1:])
+}
+
+func reverse(a []int) {
+	for i, n := 0, len(a); i < n/2; i++ {
+		a[i], a[n-1-i] = a[n-1-i], a[i]
+	}
 }
