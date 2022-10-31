@@ -6,6 +6,6 @@ import (
 )
 
 func TestCalculate(t *testing.T) {
-	res := Calculate("1+2")
+	res := Calculate("1+2*3-1/1")
 	fmt.Println(res)
 }
