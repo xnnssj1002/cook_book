@@ -71,6 +71,12 @@ func TestNode_PreorderDfsTraversalByStack(t *testing.T) {
 	fmt.Println("前序遍历-栈", res)
 }
 
+// 栈+标记 - 前序遍历
+func TestNode_PreorderDfsTraversalByStackSign(t *testing.T) {
+	res := root.PreorderDfsTraversalByStackSign()
+	fmt.Println("前序遍历-栈+标记", res)
+}
+
 // 递归深度优先 - 中序遍历
 func TestNode_MiddleOrderDfsTraversalByRecursion(t *testing.T) {
 	res := root.MiddleOrderDfsTraversalByRecursion()
@@ -81,6 +87,12 @@ func TestNode_MiddleOrderDfsTraversalByRecursion(t *testing.T) {
 func TestNode_MiddleOrderDfsTraversalByIterateInStack(t *testing.T) {
 	res := root.MiddleOrderDfsTraversalByIterateInStack()
 	fmt.Println("中序遍历-栈", res)
+}
+
+// 栈+标记 - 中序遍历
+func TestNode_MiddleOrderDfsTraversalByStackSign(t *testing.T) {
+	res := root.MiddleOrderDfsTraversalByStackSign()
+	fmt.Println("中序遍历-栈+标记", res)
 }
 
 // 递归深度优先 - 后序遍历
@@ -99,6 +111,12 @@ func TestNode_PostorderDfsReversePreorder(t *testing.T) {
 func TestNode_PostorderDfsTraversalByIterateInStack(t *testing.T) {
 	res := root.PostorderDfsTraversalByIterateInStack()
 	fmt.Println("后序遍历-栈", res)
+}
+
+// 栈+标记 - 后序遍历
+func TestNode_PostorderDfsTraversalByStackSign(t *testing.T) {
+	res := root.PostorderDfsTraversalByStackSign()
+	fmt.Println("后序遍历-栈+标记", res)
 }
 
 // 广度优先遍历
