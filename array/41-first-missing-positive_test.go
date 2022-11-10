@@ -2,7 +2,7 @@ package array
 
 import "testing"
 
-var testCases = []struct {
+var testCases41 = []struct {
 	Case   []int
 	Target int
 	Name   string
@@ -35,7 +35,7 @@ var testCases = []struct {
 }
 
 func TestFirstMissingPositiveSort(t *testing.T) {
-	for _, testCase := range testCases {
+	for _, testCase := range testCases41 {
 		got := FirstMissingPositiveSort(testCase.Case)
 		if got != testCase.Target {
 			t.Errorf("case 【%s】 expected %d, but got %d\n", testCase.Name, testCase.Target, got)
@@ -44,7 +44,7 @@ func TestFirstMissingPositiveSort(t *testing.T) {
 }
 
 func TestFirstMissingPositiveSameHash(t *testing.T) {
-	for _, testCase := range testCases {
+	for _, testCase := range testCases41 {
 		got := FirstMissingPositiveSameHash(testCase.Case)
 		if got != testCase.Target {
 			t.Errorf("case 【%s】 expected %d, but got %d\n", testCase.Name, testCase.Target, got)
@@ -53,7 +53,7 @@ func TestFirstMissingPositiveSameHash(t *testing.T) {
 }
 
 func TestFirstMissingPositiveExchange(t *testing.T) {
-	for _, testCase := range testCases {
+	for _, testCase := range testCases41 {
 		got := FirstMissingPositiveExchange(testCase.Case)
 		if got != testCase.Target {
 			t.Errorf("case 【%s】 expected %d, but got %d\n", testCase.Name, testCase.Target, got)
