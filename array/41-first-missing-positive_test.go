@@ -1,6 +1,9 @@
 package array
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 var testCases41 = []struct {
 	Case   []int
@@ -35,6 +38,7 @@ var testCases41 = []struct {
 }
 
 func TestFirstMissingPositiveSort(t *testing.T) {
+	fmt.Println(testCases41)
 	for _, testCase := range testCases41 {
 		got := FirstMissingPositiveSort(testCase.Case)
 		if got != testCase.Target {
@@ -44,6 +48,8 @@ func TestFirstMissingPositiveSort(t *testing.T) {
 }
 
 func TestFirstMissingPositiveSameHash(t *testing.T) {
+	// 该方法修改了测试用例，如果同时执行的话，会对后边的测试有影响
+	fmt.Println(testCases41)
 	for _, testCase := range testCases41 {
 		got := FirstMissingPositiveSameHash(testCase.Case)
 		if got != testCase.Target {
@@ -53,8 +59,11 @@ func TestFirstMissingPositiveSameHash(t *testing.T) {
 }
 
 func TestFirstMissingPositiveExchange(t *testing.T) {
+	fmt.Println(testCases41)
 	for _, testCase := range testCases41 {
+		fmt.Println(testCase)
 		got := FirstMissingPositiveExchange(testCase.Case)
+		fmt.Println(got)
 		if got != testCase.Target {
 			t.Errorf("case 【%s】 expected %d, but got %d\n", testCase.Name, testCase.Target, got)
 		}

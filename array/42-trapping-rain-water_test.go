@@ -21,9 +21,18 @@ var testCases42 = []struct {
 	},
 }
 
-func TestTrap(t *testing.T) {
+func TestTrapDoublePointForce(t *testing.T) {
 	for _, testCase := range testCases42 {
 		got := TrapDoublePointForce(testCase.Case)
+		if got != testCase.Target {
+			t.Errorf("case 【%s】 expected %d, but got %d\n", testCase.Name, testCase.Target, got)
+		}
+	}
+}
+
+func TestTrapDoublePointForceOffice(t *testing.T) {
+	for _, testCase := range testCases42 {
+		got := TrapDoublePointForceOffice(testCase.Case)
 		if got != testCase.Target {
 			t.Errorf("case 【%s】 expected %d, but got %d\n", testCase.Name, testCase.Target, got)
 		}
