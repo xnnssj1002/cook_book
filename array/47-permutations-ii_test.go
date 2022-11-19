@@ -5,14 +5,14 @@ import (
 	"testing"
 )
 
-var testCases46 = []struct {
+var testCases47 = []struct {
 	Case      []int
 	TargetLen int
 	Name      string
 }{
 	{
-		Case:      []int{1, 2, 3},
-		TargetLen: 6,
+		Case:      []int{1, 1, 2},
+		TargetLen: 3,
 		Name:      "case1",
 	},
 	{
@@ -32,9 +32,9 @@ var testCases46 = []struct {
 	},
 }
 
-func TestPermute(t *testing.T) {
-	for _, testCase := range testCases46 {
-		got := Permute(testCase.Case)
+func TestPermuteUnique(t *testing.T) {
+	for _, testCase := range testCases47 {
+		got := PermuteUnique(testCase.Case)
 		fmt.Printf("case 【%s】 res is %v\n", testCase.Name, got)
 		if len(got) != testCase.TargetLen {
 			t.Errorf("case 【%s】 expected len %d, but got len %d\n", testCase.Name, testCase.TargetLen, len(got))
