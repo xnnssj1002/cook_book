@@ -32,9 +32,19 @@ var testCases69 = []struct {
 	},
 }
 
-func TestPermuteUnique(t *testing.T) {
+func TestMySqrt(t *testing.T) {
 	for _, testCase := range testCases69 {
 		got := MySqrt(testCase.Case)
+		fmt.Printf("case 【%s】 res is %v\n", testCase.Name, got)
+		if got != testCase.Target {
+			t.Errorf("case 【%s】 expected %d, but got len %d\n", testCase.Name, testCase.Target, got)
+		}
+	}
+}
+
+func TestMySqrtNiuDun(t *testing.T) {
+	for _, testCase := range testCases69 {
+		got := MySqrtNiuDun(testCase.Case)
 		fmt.Printf("case 【%s】 res is %v\n", testCase.Name, got)
 		if got != testCase.Target {
 			t.Errorf("case 【%s】 expected %d, but got len %d\n", testCase.Name, testCase.Target, got)

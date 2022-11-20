@@ -25,3 +25,14 @@ func MySqrt(x int) int {
 	}
 	return right
 }
+
+func MySqrtNiuDun(x int) int {
+	if x == 0 || x == 1 {
+		return x
+	}
+	temp := x
+	for temp*temp > x {
+		temp = (temp + x/temp) / 2
+	}
+	return temp
+}
