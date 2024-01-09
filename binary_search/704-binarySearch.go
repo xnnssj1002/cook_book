@@ -41,7 +41,7 @@ func binarySearchRemoveLeft(nums []int, target int) int {
 	low, high := 0, len(nums)-1
 	for low < high { // 循环退出条件是low=high
 		mid := low + (high-low)>>1
-		if nums[mid] < target { // 排除mid左侧的部分
+		if nums[mid] < target { // target在右侧。排除mid左侧的部分
 			low = mid + 1
 		} else {
 			high = mid
@@ -69,7 +69,7 @@ func binarySearchRemoveRight(nums []int, target int) int {
 	low, high := 0, len(nums)-1
 	for low < high { // 循环退出条件是low=high
 		mid := low + (high-low+1)>>1
-		if target < nums[mid] { // 排除mid左侧的部分
+		if target < nums[mid] { // target在左侧。排除mid左侧的部分
 			high = mid - 1
 		} else {
 			low = mid

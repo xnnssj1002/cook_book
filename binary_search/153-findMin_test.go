@@ -22,6 +22,11 @@ var findMinSources = []struct {
 		nums: []int{11, 13, 15, 17},
 		hope: 11,
 	},
+	{
+		name: "test3",
+		nums: []int{2, 3, 4, 5, 1},
+		hope: 1,
+	},
 }
 
 func TestFindMin(t *testing.T) {
