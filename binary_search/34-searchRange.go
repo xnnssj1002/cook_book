@@ -46,19 +46,20 @@ func searchRangeMid(nums []int, target int) []int {
 	}
 
 	low, high := 0, len(nums)-1
-
 	for low <= high {
 		mid := low + (high-low)>>1
 		if nums[mid] == target {
+			// 以mid为中心，向右边扩散
 			for i := mid; i < len(nums) && nums[i] == target; i++ {
 				res[1] = i
 			}
+			// 以mid为中心，向左边扩散
 			for i := mid; i >= 0 && nums[i] == target; i-- {
 				res[0] = i
 			}
-
 			break
 		}
+
 		if nums[mid] < target {
 			low = mid + 1
 		} else {
