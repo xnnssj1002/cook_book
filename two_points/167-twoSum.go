@@ -1,7 +1,7 @@
-package binary_search
+package two_points
 
 /*
-167. 两数之和 II - 输入有序数组 ~ 二分查找
+167. 两数之和 II - 输入有序数组 ～ 双指针
 给你一个下标从 1 开始的整数数组 numbers ，该数组已按 非递减顺序排列  ，请你从数组中找出满足相加之和等于目标数 target 的两个数。
 如果设这两个数分别是 numbers[index1] 和 numbers[index2] ，则 1 <= index1 < index2 <= numbers.length 。
 以长度为2的整数数组 [index1, index2] 的形式返回这两个整数的下标 index1 和 index2。
@@ -28,31 +28,19 @@ package binary_search
 仅存在一个有效答案
 */
 
-// twoSumSort 二分查找解法
-// 可以首先固定第一个数，然后寻找第二个数，第二个数等于目标值减去第一个数的差。
-// 利用数组的有序性质，可以通过二分查找的方法寻找第二个数。
-// 为了避免重复寻找，在寻找第二个数时，只在第一个数的右侧寻找
+// twoSumSort 双指针解法
+// 解说双指针的精彩解释：https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/solutions/87919/yi-zhang-tu-gao-su-ni-on-de-shuang-zhi-zhen-jie-fa/
 func twoSumSort(numbers []int, target int) []int {
-
-	for i := 0; i < len(numbers); i++ {
-		// 使用二分查找，需要查找新目标值
-		newTarget := target - numbers[i]
-
-		// 二分查找的逻辑
-		low, high := i+1, len(numbers)-1
-		for low <= high {
-			mid := low + (high-low)>>1
-			if numbers[mid] == newTarget {
-				return []int{i + 1, mid + 1}
-			}
-			if newTarget < numbers[mid] {
-				high = mid - 1
-			} else {
-				low = mid + 1
-			}
+	left, right := 0, len(numbers)-1
+	for left < right {
+		if numbers[left]+numbers[right] == target {
+			return []int{left + 1, right + 1}
 		}
-
+		if numbers[left]+numbers[right] < target {
+			left++
+		} else {
+			right--
+		}
 	}
-
 	return []int{-1, -1}
 }

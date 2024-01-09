@@ -1,4 +1,4 @@
-package binary_search
+package two_points
 
 import "testing"
 
