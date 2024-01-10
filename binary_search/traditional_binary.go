@@ -53,8 +53,8 @@ func binarySearchMatrix1(nums []int, target int) int {
 // 这种情况下，mid 应该向上取整，mid = 5 + (6 - 5 + 1) / 2 = 6，如果进入 low = mid 分支，则下次查找区间为 [6, 6]。
 //
 // 关于排除法的边界设置，可以记忆为：可以记为：
-// left = mid + 1、right = mid 和 mid = left + (right - left) / 2 一定是配对出现的。即目标值在中间值右侧(大的一侧)，中间值向下取整
-// right = mid - 1、left = mid 和 mid = left + (right - left + 1) / 2 一定是配对出现的。即目标值在中间值左侧(小的一侧)，中间值向上取整
+// low = mid + 1、high = mid 和 mid = low + (high - low) / 2 一定是配对出现的。即 high=mid时，求中间值需要取左边的数(数组个数为偶数时)
+// high = mid - 1、low = mid 和 mid = low + (high - low + 1) / 2 一定是配对出现的。即low=mid时，求中间值时需要取右边的数(数组个数为偶数时)
 func binarySearchMatrix2(nums []int, target int) int {
 	low, high := 0, len(nums)-1
 
