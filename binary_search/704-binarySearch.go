@@ -39,7 +39,7 @@ func binarySearch(nums []int, target int) int {
 // binarySearchRemoveLeft 排除法，排除掉左侧部分
 func binarySearchRemoveLeft(nums []int, target int) int {
 	low, high := 0, len(nums)-1
-	for low < high { // 循环退出条件是low=high
+	for low < high { // 循环退出条件是low<high
 		mid := low + (high-low)>>1
 		if nums[mid] < target { // target在右侧。排除mid左侧的部分
 			low = mid + 1
@@ -67,9 +67,9 @@ func binarySearchRemoveLeft(nums []int, target int) int {
 // right = mid - 1、left = mid 和 mid = left + (right - left + 1) / 2 一定是配对出现的。即目标值在中间值左侧(小的一侧)，中间值向上取整
 func binarySearchRemoveRight(nums []int, target int) int {
 	low, high := 0, len(nums)-1
-	for low < high { // 循环退出条件是low=high
+	for low < high { // 循环退出条件是low<high
 		mid := low + (high-low+1)>>1
-		if target < nums[mid] { // target在左侧。排除mid左侧的部分
+		if target < nums[mid] {
 			high = mid - 1
 		} else {
 			low = mid
