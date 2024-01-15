@@ -16,6 +16,44 @@ package sliding_window
 输出：0
 */
 
+// 不定长滑动窗口
+// 我们固定子数组 [i, j] 的右端点 j 时，显然左端点 i 越大，子数组元素乘积越小。
+// 对于子数组 [i, j]，如果当左端点 i≥l1 时，所有子数组的元素乘积都小于 k的话，
+// 那么对于左端点 i<l1，所有子数组的元素乘积都大于等于 k。
+// 那么对于右端点为 j + 1 的所有子数组，它的左端点 i 就不需要从 0 开始枚举，因为对于所有 i<l1 的子数组，它们的元素乘积都大于等于 k。
+//
+// 我们只要从 i=l1 处开始枚举，直到子数组 i=l2 时子数组 [l2,j+1] 的元素乘积小于 k，那么左端点 i≥l2 所有子数组的元素乘积都小于 k 。
+//
+// 根据上面的分析，我们枚举子数组的右端点 j，并且左端点从i = 0开始，用 mul 记录子数组 [i, j] 的元素乘积。
+// 每枚举一个右端点 j，如果当前子数组元素乘积 mul 大于等于 k，那么我们右移左端点 i 直到满足当前子数组元素乘积小于 k 或者 i > j，
+// 那么元素乘积小于 k 的子数组数目为 j - i + 1。
+// 最后：返回所有数目之和。
+//
+// mul 的值始终不超过 k × max{nums}，因此无需担心整型溢出的问题。
 func numSubarrayProductLessThanK(nums []int, k int) int {
-	return 0
+	// left-左指针；mul-窗口中的乘积；res-需要返回子数组的个数
+	left, mul, res := 0, 1, 0
+
+	for right := 0; right < len(nums); right++ {
+		mul *= nums[right]
+
+		for ; left <= right && mul >= k; left++ {
+			mul /= nums[left]
+		}
+
+		// 解释：right-left+1 是子数组个数的原因
+		//  每次右指针位移到一个新位置，应该加上 x 种数组组合：
+		//  nums[right]
+		//  nums[right-1], nums[right]
+		//  nums[right-2], nums[right-1], nums[right]
+		//  nums[left], ......, nums[right-2], nums[right-1], nums[right]
+		//  此时x共用：x = right - left + 1 种
+		//
+		//  数组中元素都是正整数nums_i>0，右指针不动的前提下，收缩左指针，滑窗内元素乘积是递减的。
+		//  解法中，收缩左指针到窗口内元素之积刚好小于目标值target，说明此时以nums[right]为结尾的连续子数组之积都是小于target的。
+		//  举个例子：滑窗内元素为[1,2,3]（里面是索引值），目标值是7，那么当前滑窗内小于7的连续子数组为[ [3], [2,3], [1,2,3] ]。即：3-1+1=3
+		res += right - left + 1
+	}
+
+	return res
 }

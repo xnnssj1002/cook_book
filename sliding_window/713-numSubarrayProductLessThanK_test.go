@@ -20,6 +20,12 @@ var numSubarrayProductLessThanKSources = []struct {
 		target: 0,
 		hope:   0,
 	},
+	{
+		name:   "test2",
+		nums:   []int{1, 1, 1},
+		target: 2,
+		hope:   6,
+	},
 }
 
 func TestNumSubarrayProductLessThanK(t *testing.T) {
